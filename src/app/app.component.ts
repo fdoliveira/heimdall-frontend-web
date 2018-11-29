@@ -10,7 +10,7 @@ declare var google: any;
 })
 
 export class AppComponent implements OnInit {
-  title = 'Heindall';
+  title = 'Heimdall';
   private map: any;
 
   public _options: any;
