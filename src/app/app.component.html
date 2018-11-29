@@ -1,13 +1,25 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<div style="text-align:left">
   <h1>
-    {{ title }}!
+    <button pButton label="Heimdall" icon="pi pi-home" style="margin-right:.25em" class="ui-button-raised ui-button-rounded"></button>
   </h1>
 
-  <p-gmap #gmap (onMapReady)="setMap($event)" [options]="_options" [overlays]="_overlays" [style]="{'width':'100%','height':'600px'}" ></p-gmap>
+  <p-gmap #gmap (onMapReady)="setMap($event)" [options]="_options" [overlays]="_overlays" [style]="{'width':'100%','height':'500px'}" ></p-gmap>
 
-  <ul>
-  <li *ngFor="let overlay of _overlays">
-      <pre>{{ overlay.title }}</pre>
-  </li>
-</ul>
+  <div class="ui-g-12"></div>
+
+  <p-table [value]="_ocurrences">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Nome</th>
+            <th>URL</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-ocurrence>
+        <tr>
+            <td>{{ocurrence.location_name}}</td>
+            <td>{{ocurrence.url}}</td>
+        </tr>
+    </ng-template>
+  </p-table>
+</div>
