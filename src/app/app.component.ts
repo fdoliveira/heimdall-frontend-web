@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
   constructor(db: AngularFirestore) {
     this._ocurrences = [];
 
-    db.collection('/ocurrences').valueChanges().subscribe(
+    db.collection('/ocurrences', ref => ref.orderBy('timestamp', 'desc')).valueChanges().subscribe(
       ocurrences => this.initMap(ocurrences),
       error => this._errorMessage = <any>error
     );
@@ -61,12 +61,13 @@ export class AppComponent implements OnInit {
       // Add Natal/RN as a Center of map
       this._options = {
           center: {lat: -5.7999146, lng: -35.2922841},
-          zoom: 16
+          zoom: 15
       };
   }
 
   public setMap(event) {
     this.map = event.map;
+    console.log(this._ocurrences);
   }
 
 }
