@@ -32,7 +32,20 @@ export class AppComponent implements OnInit {
     );
   }
 
+  private normalizeOcurrences(ocurrences) {
+    ocurrences.forEach(ocurrence => {
+      if ((ocurrence.location_name === undefined) || (ocurrence.location_name === null)) {
+        ocurrence.location_name = 'UNDEFINED';
+      }
+      if ((ocurrence.url === undefined) || (ocurrence.url === null)) {
+        ocurrence.url = 'UNDEFINED';
+      }
+    });
+  }
+
   private initMap(ocurrences) {
+    this.normalizeOcurrences(ocurrences);
+
     this._overlays = [];
     this._ocurrences = ocurrences;
 
