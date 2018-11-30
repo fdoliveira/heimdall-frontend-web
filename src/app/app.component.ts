@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { MenuItem } from 'primeng/api';
 declare var google: any;
 
 @Component({
@@ -13,8 +12,6 @@ declare var google: any;
 export class AppComponent implements OnInit {
   title = 'Heimdall';
   private map: any;
-
-  public _items: MenuItem[];
 
   public _options: any;
   public _overlays: any[];
@@ -66,31 +63,6 @@ export class AppComponent implements OnInit {
           center: {lat: -5.7999146, lng: -35.2922841},
           zoom: 16
       };
-
-      this._items = [
-        {
-            label: 'File',
-            items: [{
-                    label: 'New',
-                    icon: 'pi pi-fw pi-plus',
-                    items: [
-                        {label: 'Project'},
-                        {label: 'Other'},
-                    ]
-                },
-                {label: 'Open'},
-                {label: 'Quit'}
-            ]
-        },
-        {
-            label: 'Edit',
-            icon: 'pi pi-fw pi-pencil',
-            items: [
-                {label: 'Delete', icon: 'pi pi-fw pi-trash'},
-                {label: 'Refresh', icon: 'pi pi-fw pi-refresh'}
-            ]
-        }
-    ];
   }
 
   public setMap(event) {
